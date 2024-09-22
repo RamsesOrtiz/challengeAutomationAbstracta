@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Product Information">
+    <test verbose="2" preserve-order="true" name="Product Info Test">
+        <classes>
+            <class name="com.abstracta.defs.ProductInfoTest">
+                <methods>
+                    <include name="a_visit_to_the_website"/>
+                    <include name="the_products_information_is_displayed"/>
+                    <include name="a_text_file_is_generated_with_each_product_information"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

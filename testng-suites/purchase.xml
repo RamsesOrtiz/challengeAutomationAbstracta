@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Purchase a Product in website">
+    <test verbose="2" preserve-order="true" name="Purchase Test">
+        <classes>
+            <class name="com.abstracta.defs.CartTest">
+                <methods>
+                    <include name="a_user_visits_the_website"/>
+                    <include name="select_a_product"/>
+                    <include name="select_add_to_cart"/>
+                    <include name="the_system_displays_and_alert_confirmation"/>
+                </methods>
+            </class>
+            <class name="com.abstracta.defs.PurchaseTest">
+                <methods>
+                    <include name="a_user_goes_to_cart"/>
+                    <include name="select_place_order"/>
+                    <include name="fill_the_payment_data"/>
+                    <include name="the_system_displays_a_message_confirmation_about_the_purchase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

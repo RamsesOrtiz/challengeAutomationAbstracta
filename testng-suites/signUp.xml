@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Log In in website">
+    <test verbose="2" preserve-order="true" name="Sign Up Test">
+        <classes>
+            <class name="com.abstracta.defs.SignUpTest">
+                <methods>
+                    <include name="a_user_visits_the_website"/>
+                    <include name="access_to_sign_up"/>
+                    <include name="fill_username_and_password"/>
+                    <include name="the_system_displays_an_alert_confirmation_about_the_sign_up"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
