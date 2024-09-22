@@ -1,5 +1,7 @@
 package com.abstracta.defs;
 
+import com.abstracta.process.LogIn;
+import com.abstracta.utils.PropertyManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,6 +10,7 @@ public class LogInTest {
 
     @Given("a user visits the website")
     public void a_user_visits_the_website() {
+        LogIn.visitPage(PropertyManager.getProperty("url"));
     }
 
     @When("select log in")
