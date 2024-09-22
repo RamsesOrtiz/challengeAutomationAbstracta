@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Automation Web Challenge - Abstracta"  >
+<suite name="Automation Web Challenge - Abstracta" parallel="false">
     <test name="Main Test">
         <classes>
-            <class name="com.abstracta.RunTest"/>
+            <class name="com.abstracta.defs.ProductInfoTest"/>
+            <class name="com.abstracta.defs.PurchaseTest"/>
+            <class name="com.abstracta.defs.SignUpTest"/>
+            <class name="com.abstracta.defs.LogInTest"/>
         </classes>
     </test>
     <suite-files>
