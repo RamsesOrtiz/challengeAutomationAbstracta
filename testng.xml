@@ -7,7 +7,9 @@
         </classes>
     </test>
     <suite-files>
-        <suite-file path="./testng-suites/TotalPurchaseOverTheLimit.xml"/>
-        <suite-file path="./testng-suites/TotalPurchaseBelowTheLimit.xml"/>
+        <suite-file path="./testng-suites/productInfo.xml"/>
+        <suite-file path="./testng-suites/purchase.xml"/>
+        <suite-file path="./testng-suites/signUp.xml"/>
+        <suite-file path="./testng-suites/logIn.xml"/>
     </suite-files>
 </suite>
