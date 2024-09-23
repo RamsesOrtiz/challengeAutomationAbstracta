@@ -66,6 +66,10 @@ public class ConfigPage {
         driver.switchTo().alert().accept();
     }
 
+    public static String alertText() {
+        return driver.switchTo().alert().getText();
+    }
+
     public static WebElement findElement(By locator) {
         return driver.findElement(locator);
     }

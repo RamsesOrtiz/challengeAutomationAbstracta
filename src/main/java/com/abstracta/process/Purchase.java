@@ -56,8 +56,8 @@ public class Purchase extends ConfigPage {
 
     public static boolean isAddToCartConfirmationDisplayed() {
         if (isAlertPresent()) {
+            LoggerPage.logEvent("ALERT", "Alert: " + alertText());
             LoggerPage.logEvent("PURCHASE", "Product Added Confirmation successfully displayed");
-            screenshot("Purchase");
             acceptAlert();
             return true;
         } else {
@@ -97,7 +97,7 @@ public class Purchase extends ConfigPage {
         type(yearInput, year);
         LoggerPage.logEvent("PURCHASE", "Purchase data successfully filled");
         screenshot("Purchase Data");
-        click(purchaseBtn);
+        moveAndClick(purchaseBtn);
     }
 
     public static boolean isPurchaseConfirmationDisplayed() {

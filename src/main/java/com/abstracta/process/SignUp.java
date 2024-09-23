@@ -33,12 +33,13 @@ public class SignUp extends ConfigPage {
         LoggerPage.logEvent("SIGN_UP", "Sign Up data successfully filled");
         screenshot("Sign Up data filled");
         click(signUpBtn);
+        waitTime(3);
     }
 
     public static boolean isSignUpConfirmationDisplayed() {
         if (isAlertPresent()) {
+            LoggerPage.logEvent("ALERT", "Alert: " + alertText());
             LoggerPage.logEvent("SIGN_UP", "Sign Up process successfully confirmed");
-            screenshot("Sign Up process confirmed");
             acceptAlert();
             return true;
         } else {
