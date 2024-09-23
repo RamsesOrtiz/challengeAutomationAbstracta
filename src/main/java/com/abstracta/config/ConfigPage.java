@@ -49,7 +49,28 @@ public class ConfigPage {
         LoggerPage.logEvent("URL", "URL visited: " + url);
     }
 
-    public static WebElement findElementInElement(WebElement element, By locator){
+    public static String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    public static boolean isAlertPresent() {
+        try {
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
+    public static void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
+
+    public static WebElement findElement(By locator) {
+        return driver.findElement(locator);
+    }
+
+    public static WebElement findElementInElement(WebElement element, By locator) {
         return element.findElement(locator);
     }
 
@@ -91,6 +112,10 @@ public class ConfigPage {
 
     public static String getAttribute(WebElement element, String attribute) {
         return element.getAttribute(attribute);
+    }
+
+    public static String getAttribute(By locator, String attribute) {
+        return driver.findElement(locator).getAttribute(attribute);
     }
 
     public static List<WebElement> getList(By locator) {
