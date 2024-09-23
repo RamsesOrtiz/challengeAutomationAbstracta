@@ -33,7 +33,7 @@
             </Policies>
         </RollingFile>
         <RollingFile name="MyFileError"
-                     fileName="${log-path}/${log-name}-log.error"
+                     fileName="${log-path}/${log-name}.log"
                      filePattern="${log-path}/${log-name}-%d{yyyy-MM-dd}.error.gz">
             <LevelRangeFilter minLevel="FATAL" maxLevel="ERROR"
                               onMatch="ACCEPT" onMismatch="DENY"/>

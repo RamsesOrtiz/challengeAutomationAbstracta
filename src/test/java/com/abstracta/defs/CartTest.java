@@ -4,6 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static com.abstracta.utils.PropertyManager.getProperty;
+
 public class CartTest {
 
     @Given("a user visits the website to add a product")

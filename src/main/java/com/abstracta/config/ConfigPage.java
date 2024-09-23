@@ -5,12 +5,16 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+import java.util.List;
 
 public class ConfigPage {
 
@@ -45,6 +49,10 @@ public class ConfigPage {
         LoggerPage.logEvent("URL", "URL visited: " + url);
     }
 
+    public static WebElement findElementInElement(WebElement element, By locator){
+        return element.findElement(locator);
+    }
+
     public static void waitElement(By locator, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -53,15 +61,40 @@ public class ConfigPage {
     public static void moveAndClick(By locator) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView()", driver.findElement(locator));
-        driver.findElement(locator).click();
+        click(locator);
+    }
+
+    public static void click(By locator) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            Actions actions = new Actions(driver);
+            WebElement element = driver.findElement(locator);
+            actions.moveToElement(element).click(element).perform();
+        } catch (Exception e) {
+            LoggerPage.logEvent("ERROR", "Click Exception: " + locator.toString());
+        }
     }
 
     public static String getText(By locator) {
         return driver.findElement(locator).getText();
     }
 
+    public static String getText(WebElement element) {
+        return element.getText();
+    }
+
     public static void type(By locator, String inputText) {
+        click(locator);
         driver.findElement(locator).sendKeys(inputText);
+    }
+
+    public static String getAttribute(WebElement element, String attribute) {
+        return element.getAttribute(attribute);
+    }
+
+    public static List<WebElement> getList(By locator) {
+        return driver.findElements(locator);
     }
 
     public static boolean isDisplayed(By locator) {
@@ -73,6 +106,14 @@ public class ConfigPage {
         }
     }
 
+    public static void waitTime(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            LoggerPage.logEvent("ERROR", e.getMessage());
+        }
+    }
+
     public static void quit() {
         if (driver != null) {
             LoggerPage.logEvent("FINISH", "Closing Webdriver");
@@ -81,9 +122,10 @@ public class ConfigPage {
     }
 
     public static byte[] screenshot(String process) {
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         File scr = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scr, new File("screenshots/process-" + process + ".png"));
+            FileUtils.copyFile(scr, new File("screenshots/" + date + "/process-" + process + ".png"));
         } catch (IOException e) {
             LoggerPage.logEvent("ERROR", e.getMessage());
         }
